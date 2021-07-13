@@ -16,7 +16,7 @@ class tickets(commands.Cog, name='tickets'):
 
 	@commands.command()
 	async def thelp(self,ctx):
-			with open("data/ticket.json") as f:
+			with open("modules/ticket.json") as f:
 					data = json.load(f)
 			
 			valid_user = False
@@ -63,7 +63,7 @@ class tickets(commands.Cog, name='tickets'):
 			else:
 					message_content = "".join(args)
 
-			with open("data/ticket.json") as f:
+			with open("modules/ticket.json") as f:
 					data = json.load(f)
 
 			ticket_number = int(data["ticket-counter"])
@@ -108,7 +108,7 @@ class tickets(commands.Cog, name='tickets'):
 			data["ticket-channel-ids"].append(ticket_channel.id)
 
 			data["ticket-counter"] = int(ticket_number)
-			with open("data/ticket.json", 'w') as f:
+			with open("modules/ticket.json", 'w') as f:
 					json.dump(data, f)
 			
 			created_em = discord.Embed(title="Cerebrus Ticketing", description="Your ticket has been created at {}".format(ticket_channel.mention), color=0x00a8ff)
@@ -117,7 +117,7 @@ class tickets(commands.Cog, name='tickets'):
 
 	@commands.command()
 	async def close(self,ctx):
-			with open('data/ticket.json') as f:
+			with open('modules/ticket.json') as f:
 					data = json.load(f)
 
 			if ctx.channel.id in data["ticket-channel-ids"]:
@@ -138,7 +138,7 @@ class tickets(commands.Cog, name='tickets'):
 							index = data["ticket-channel-ids"].index(channel_id)
 							del data["ticket-channel-ids"][index]
 
-							with open('data/ticket.json', 'w') as f:
+							with open('modules/ticket.json', 'w') as f:
 									json.dump(data, f)
 					
 					except asyncio.TimeoutError:
@@ -150,7 +150,7 @@ class tickets(commands.Cog, name='tickets'):
 	@commands.command()
 	async def addaccess(self,ctx, role_id=None):
 
-			with open('data/ticket.json') as f:
+			with open('modules/ticket.json') as f:
 					data = json.load(f)
 			
 			valid_user = False
@@ -170,12 +170,12 @@ class tickets(commands.Cog, name='tickets'):
 							try:
 									role = ctx.guild.get_role(role_id)
 
-									with open("data/ticket.json") as f:
+									with open("modules/ticket.json") as f:
 											data = json.load(f)
 
 									data["valid-roles"].append(role_id)
 
-									with open('data/ticket.json', 'w') as f:
+									with open('modules/ticket.json', 'w') as f:
 											json.dump(data, f)
 									
 									em = discord.Embed(title="Cerebrus Ticketing", description="You have successfully added `{}` to the list of roles with access to tickets.".format(role.name), color=0x00a8ff)
@@ -196,7 +196,7 @@ class tickets(commands.Cog, name='tickets'):
 
 	@commands.command()
 	async def delaccess(ctx, role_id=None):
-			with open('data/ticket.json') as f:
+			with open('modules/ticket.json') as f:
 					data = json.load(f)
 			
 			valid_user = False
@@ -214,7 +214,7 @@ class tickets(commands.Cog, name='tickets'):
 							role_id = int(role_id)
 							role = ctx.guild.get_role(role_id)
 
-							with open("data/ticket.json") as f:
+							with open("modules/ticket.json") as f:
 									data = json.load(f)
 
 							valid_roles = data["valid-roles"]
@@ -226,7 +226,7 @@ class tickets(commands.Cog, name='tickets'):
 
 									data["valid-roles"] = valid_roles
 
-									with open('data/ticket.json', 'w') as f:
+									with open('modules/ticket.json', 'w') as f:
 											json.dump(data, f)
 
 									em = discord.Embed(title="Cerebrus Ticketing", description="You have successfully removed `{}` from the list of roles with access to tickets.".format(role.name), color=0x00a8ff)
@@ -249,7 +249,7 @@ class tickets(commands.Cog, name='tickets'):
 	@commands.command()
 	async def addpingedrole(self,ctx, role_id=None):
 
-			with open('data/ticket.json') as f:
+			with open('modules/ticket.json') as f:
 					data = json.load(f)
 			
 			valid_user = False
@@ -270,12 +270,12 @@ class tickets(commands.Cog, name='tickets'):
 							try:
 									role = ctx.guild.get_role(role_id)
 
-									with open("data/ticket.json") as f:
+									with open("modules/ticket.json") as f:
 											data = json.load(f)
 
 									data["pinged-roles"].append(role_id)
 
-									with open('data/ticket.json', 'w') as f:
+									with open('modules/ticket.json', 'w') as f:
 											json.dump(data, f)
 
 									em = discord.Embed(title="Cerebrus Ticketing", description="You have successfully added `{}` to the list of roles that get pinged when new tickets are created!".format(role.name), color=0x00a8ff)
@@ -297,7 +297,7 @@ class tickets(commands.Cog, name='tickets'):
 	@commands.command()
 	async def delpingedrole(self,ctx, role_id=None):
 
-			with open('data/ticket.json') as f:
+			with open('modules/ticket.json') as f:
 					data = json.load(f)
 			
 			valid_user = False
@@ -315,7 +315,7 @@ class tickets(commands.Cog, name='tickets'):
 							role_id = int(role_id)
 							role = ctx.guild.get_role(role_id)
 
-							with open("data/ticket.json") as f:
+							with open("modules/ticket.json") as f:
 									data = json.load(f)
 
 							pinged_roles = data["pinged-roles"]
@@ -327,7 +327,7 @@ class tickets(commands.Cog, name='tickets'):
 
 									data["pinged-roles"] = pinged_roles
 
-									with open('data/ticket.json', 'w') as f:
+									with open('modules/ticket.json', 'w') as f:
 											json.dump(data, f)
 
 									em = discord.Embed(title="Cerebrus Ticketing", description="You have successfully removed `{}` from the list of roles that get pinged when new tickets are created.".format(role.name), color=0x00a8ff)
@@ -354,12 +354,12 @@ class tickets(commands.Cog, name='tickets'):
 					role_id = int(role_id)
 					role = ctx.guild.get_role(role_id)
 
-					with open("data/ticket.json") as f:
+					with open("modules/ticket.json") as f:
 							data = json.load(f)
 
 					data["verified-roles"].append(role_id)
 
-					with open('data/ticket.json', 'w') as f:
+					with open('modules/ticket.json', 'w') as f:
 							json.dump(data, f)
 					
 					em = discord.Embed(title="Cerebrus Ticketing", description="You have successfully added `{}` to the list of roles that can run admin-level commands!".format(role.name), color=0x00a8ff)
@@ -376,7 +376,7 @@ class tickets(commands.Cog, name='tickets'):
 					role_id = int(role_id)
 					role = ctx.guild.get_role(role_id)
 
-					with open("data/ticket.json") as f:
+					with open("modules/ticket.json") as f:
 							data = json.load(f)
 
 					admin_roles = data["verified-roles"]
@@ -388,7 +388,7 @@ class tickets(commands.Cog, name='tickets'):
 
 							data["verified-roles"] = admin_roles
 
-							with open('data/ticket.json', 'w') as f:
+							with open('modules/ticket.json', 'w') as f:
 									json.dump(data, f)
 							
 							em = discord.Embed(title="Cerebrus Ticketing", description="You have successfully removed `{}` from the list of roles that get pinged when new tickets are created.".format(role.name), color=0x00a8ff)
