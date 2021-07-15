@@ -3,5 +3,7 @@
 "version": "1.0",
 "author": "Eris9/Kaneki",
 "files": ["https://raw.githubusercontent.com/Eris9/ticket_bot/main/src/ticket.py"],
-"modules": ["https://raw.githubusercontent.com/Eris9/ticket_bot/main/src/ticket.json"]
+"modules": ["https://raw.githubusercontent.com/Eris9/ticket_bot/main/src/ticket.json"],
+"exec": "echo thank you for installing ticket cog by Eris9/Kaneki",
+"pyexec": ""
 }
