@@ -1,0 +1,11 @@
+{
+"name": "<Your Repo’s Name>",
+"category": [],
+"suite": "stable",
+"Version": 1,
+"author": "cydia-ios",
+"icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7kBoHhtAYy5Hhcsn-zm7_pLdCw0EWfD4m_w&usqp=CAU",
+"description": "description",
+"install_msg": "thank you for installing this repo",
+"agreement": "To install this we will be collecting .... and this can impact your privacy"
+}
