@@ -1,0 +1,15 @@
+{
+"author": ["Eris9/Kaneki"],
+"install_msg": "ty for installing",
+"icon":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7kBoHhtAYy5Hhcsn-zm7_pLdCw0EWfD4m_w&usqp=CAU",
+"files":["ticket.py"],
+"lib":["ticket.json"],
+"name": "Ticket_cog",
+"disabled": false,
+"short": "Ticketing commands",
+"description": "Ticketing commands",
+"tags": [],
+"requirements": ["asyncio", "discord","io"],
+"hidden": false,
+"end_user_data_statement": "This cog does not store any End User Data."
+}
